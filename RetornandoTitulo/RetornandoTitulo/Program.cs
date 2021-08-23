@@ -81,7 +81,11 @@ namespace RetornandoTitulo
                     Thread.Sleep(3500);
                     if (ProximaPagina != null)
                     {
-                        Lista = Driver.FindElements(By.XPath("//div//div//div//a//h3"));
+                        int Restante = (TotalTitulo - Lista.Count);
+                        for (int i = 1; i < Restante; ++i)
+                        {
+                            Lista = Driver.FindElements(By.XPath($"/html/body/div[7]/div/div[8]/div[1]/div/div[2]/div[2]/div/div/div[{i++}]/div/div/div[1]/a/h3"));
+                        }
                         foreach (var item in Lista)
                         {
                             Console.WriteLine($" ---> {item.Text}");
